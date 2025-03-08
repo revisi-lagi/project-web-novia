@@ -9,13 +9,13 @@ class MWarga extends CI_Model
         return $this->db->insert('pengaduan', $data);
     }
 
-     // Simpan Data Konsultasi
-     public function insert_konsultasi($data)
-     {
-         return $this->db->insert('konsultasi', $data);
-     }
+    // Simpan Data Konsultasi
+    public function insert_konsultasi($data)
+    {
+        return $this->db->insert('konsultasi', $data);
+    }
 
-     // Simpan Tanggapan Konsultasi
+    // Simpan Tanggapan Konsultasi
     public function insert_tanggapan($data)
     {
         return $this->db->insert('tanggapan', $data);
@@ -27,11 +27,17 @@ class MWarga extends CI_Model
     }
 
     public function update_tanggapan_konsultasi($data)
-{
-    $this->db->where('id', $data['konsultasi_id']);
-    return $this->db->update('konsultasi', ['tanggapan' => $data['tanggapan'], 'tanggal_tanggapan' => $data['tanggal_tanggapan']]);
-}
+    {
+        $this->db->where('id', $data['konsultasi_id']);
+        return $this->db->update('konsultasi', ['tanggapan' => $data['tanggapan'], 'tanggal_tanggapan' => $data['tanggal_tanggapan']]);
+    }
 
-
-
+    public function get_pengaduan_by_user_id($user_id)
+    {
+        $this->db->select('pengaduan.*, user.*');
+        $this->db->from('pengaduan');
+        $this->db->join('user', 'pengaduan.user_id = user.id', 'left');
+        $this->db->where('pengaduan.user_id', $user_id);
+        return $this->db->get()->result_array();
+    }
 }

@@ -45,8 +45,8 @@
                                 </button>
 
                                 <a href="<?= base_url('CAdmin/hapus_data_warga/' . $user['id']); ?>"
-                                   class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600"
-                                   onclick="return confirm('Yakin ingin menghapus data warga ini?');">
+                                    class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600"
+                                    onclick="return confirm('Yakin ingin menghapus data warga ini?');">
                                     Hapus
                                 </a>
                             </td>
@@ -84,38 +84,39 @@
     }
 
     function saveRow(id) {
-    if (!confirm("Yakin ingin menyimpan perubahan data warga ini?")) {
-        return; // Batalkan jika pengguna memilih "Batal"
-    }
+        if (!confirm("Yakin ingin menyimpan perubahan data warga ini?")) {
+            return; // Batalkan jika pengguna memilih "Batal"
+        }
 
-    let namaInput = document.getElementById("edit_nama_" + id).value;
-    let nikInput = document.getElementById("edit_nik_" + id).value;
-    let alamatInput = document.getElementById("edit_alamat_" + id).value;
-    let jenisKelaminInput = document.getElementById("edit_jenis_kelamin_" + id).value;
+        let namaInput = document.getElementById("edit_nama_" + id).value;
+        let nikInput = document.getElementById("edit_nik_" + id).value;
+        let alamatInput = document.getElementById("edit_alamat_" + id).value;
+        let jenisKelaminInput = document.getElementById("edit_jenis_kelamin_" + id).value;
 
-    fetch("<?= base_url('CAdmin/update_data_warga') ?>", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `id=${id}&nama_warga=${namaInput}&nik=${nikInput}&alamat=${alamatInput}&jenis_kelamin=${jenisKelaminInput}`
-    }).then(response => response.json())
-      .then(data => {
-          if (data.status === "success") {
-              alert("Data berhasil diperbarui!");
+        fetch("<?= base_url('CAdmin/update_data_warga') ?>", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `id=${id}&nama_warga=${namaInput}&nik=${nikInput}&alamat=${alamatInput}&jenis_kelamin=${jenisKelaminInput}`
+            }).then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    alert("Data berhasil diperbarui!");
 
-              // Kembalikan tampilan teks setelah disimpan tanpa reload
-              document.getElementById("nama_" + id).innerHTML = namaInput;
-              document.getElementById("nik_" + id).innerHTML = nikInput;
-              document.getElementById("alamat_" + id).innerHTML = alamatInput;
-              document.getElementById("jenis_kelamin_" + id).innerHTML = jenisKelaminInput;
+                    // Kembalikan tampilan teks setelah disimpan tanpa reload
+                    document.getElementById("nama_" + id).innerHTML = namaInput;
+                    document.getElementById("nik_" + id).innerHTML = nikInput;
+                    document.getElementById("alamat_" + id).innerHTML = alamatInput;
+                    document.getElementById("jenis_kelamin_" + id).innerHTML = jenisKelaminInput;
 
-              // Tampilkan kembali tombol "Edit" dan sembunyikan tombol "Simpan"
-              document.getElementById("edit_btn_" + id).classList.remove("hidden");
-              document.getElementById("save_btn_" + id).classList.add("hidden");
-          } else {
-              alert("Gagal memperbarui data.");
-          }
-      }).catch(error => console.error("Error:", error));
-
+                    // Tampilkan kembali tombol "Edit" dan sembunyikan tombol "Simpan"
+                    document.getElementById("edit_btn_" + id).classList.remove("hidden");
+                    document.getElementById("save_btn_" + id).classList.add("hidden");
+                } else {
+                    alert("Gagal memperbarui data.");
+                }
+            }).catch(error => console.error("Error:", error));
 </script>
 
-    }
+}

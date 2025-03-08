@@ -20,6 +20,7 @@
 
     <div class="w-full mt-5 bg-white border border-gray-300 rounded-lg shadow-lg p-6">
         <h2 class="text-xl font-bold text-gray-800 mb-4">Informasi Terkini</h2>
+        <h1>halo selamat datang <?= $this->session->userdata('id') ?></h1>
         <p class="text-gray-600">Selamat datang di portal pengaduan dan konsultasi warga. Silakan ajukan pengaduan dan konsultasi Anda melalui menu yang tersedia.</p>
     </div>
 </div>

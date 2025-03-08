@@ -49,6 +49,17 @@ class CWarga extends CI_Controller
         $this->load->view('Template/footer');
     }
 
+    public function menu_tanggapan_pengaduan()
+    {
+        $user_id = $this->session->userdata('id');
+        $data['pengaduan'] = $this->MWarga->get_pengaduan_by_user_id($user_id);
+
+        $this->load->view('Template/header');
+        $this->load->view('Template/sidebar_pages_warga');
+        $this->load->view('Pages/Warga/tanggapan_pengaduan', $data);
+        $this->load->view('Template/footer');
+    }
+
     public function menu_konsultasi()
     {
         $this->load->view('Template/header');
@@ -73,6 +84,7 @@ class CWarga extends CI_Controller
         } else {
             // Data dari Form
             $data = [
+                'user_id' => $this->input->post('user_id'),
                 'nama' => $this->input->post('nama'),
                 'alamat' => $this->input->post('alamat'),
                 'telepon' => $this->input->post('telepon'),
@@ -89,7 +101,7 @@ class CWarga extends CI_Controller
                 $config['allowed_types'] = 'jpg|jpeg|png|pdf';
                 $config['max_size'] = 2048; // Maksimal 2MB
                 $config['file_name'] = time() . '_' . $_FILES['bukti']['name']; // Rename file dengan timestamp
-                
+
                 $this->load->library('upload', $config);
 
                 if ($this->upload->do_upload('bukti')) {
@@ -199,7 +211,7 @@ class CWarga extends CI_Controller
                 $config['allowed_types'] = 'jpg|jpeg|png|pdf';
                 $config['max_size'] = 2048; // Maksimal 2MB
                 $config['file_name'] = time() . '_' . $_FILES['bukti']['name']; // Rename file dengan timestamp
-                
+
                 $this->load->library('upload', $config);
 
                 if ($this->upload->do_upload('bukti')) {
@@ -253,5 +265,3 @@ class CWarga extends CI_Controller
         redirect('CWarga/menu_konsultasi');
     }
 }
-    
-
