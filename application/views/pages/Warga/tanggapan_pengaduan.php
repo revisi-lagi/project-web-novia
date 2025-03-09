@@ -1,10 +1,10 @@
 <div class="w-full h-screen px-6 overflow-y-auto bg-blue-50">
-    <div class="w-full h-[80px] mt-5 flex items-center justify-between p-4 bg-blue-600 text-white shadow-lg rounded-lg">
-        <h1 class="text-2xl font-bold">Tanggapan Pengaduan</h1>
-        <a href="<?= base_url('CAuth/logout') ?>" class="text-white hover:text-gray-200 font-medium">Logout</a>
+    <div class="w-full h-[80px] mt-5 flex items-center justify-between p-4 bg-white shadow-md rounded-md">
+        <h1 class="text-xl font-bold text-gray-800">Tanggapan Pengaduan</h1>
+        <a href="<?= base_url('CAuth/logout') ?>" class="text-red-600 hover:text-red-800 font-medium">Logout</a>
     </div>
 
-    <div class="w-full h-[50px] mt-8 p-3 bg-blue-400 text-white font-bold border border-blue-700 rounded-md shadow">
+    <div class="w-full h-[50px] mt-8 p-3 bg-yellow-400 font-bold border border-blue-700 rounded-md shadow">
         <h1 class="text-lg">Laporan Pengaduan Warga </h1>
     </div>
 
@@ -21,7 +21,7 @@
     <div class="w-full mt-5 overflow-x-auto bg-white border border-gray-300 rounded-lg shadow-lg">
         <table class="w-full table-auto border-collapse">
             <thead>
-                <tr class="bg-blue-500 text-white">
+                <tr class="bg-yellow-400 text-black">
                     <th class="px-4 py-3">#</th>
                     <th class="px-4 py-3">Nama Pelapor</th>
                     <th class="px-4 py-3">Tanggal</th>

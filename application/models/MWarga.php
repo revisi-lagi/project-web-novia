@@ -40,4 +40,13 @@ class MWarga extends CI_Model
         $this->db->where('pengaduan.user_id', $user_id);
         return $this->db->get()->result_array();
     }
+
+    public function get_konsultasi_by_user_id($user_id)
+    {
+        $this->db->select('konsultasi.*, user.*');
+        $this->db->from('konsultasi');
+        $this->db->join('user', 'konsultasi.user_id = user.id', 'left');
+        $this->db->where('konsultasi.user_id', $user_id);
+        return $this->db->get()->result_array();
+    }
 }

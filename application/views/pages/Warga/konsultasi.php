@@ -22,6 +22,7 @@
 
             <div class="w-full mt-3 p-4 bg-gray-100 border border-gray-300 rounded-md">
                 <div class="space-y-4">
+                    <input type="text" value="<?= $this->session->userdata('id') ?>" name="user_id" hidden>
                     <div class="flex flex-col">
                         <label for="nama" class="font-medium">Nama</label>
                         <input name="nama" type="text" class="w-full p-2 border border-gray-400 rounded-md">

@@ -1,7 +1,7 @@
 <div class="w-full h-screen px-6 overflow-y-auto bg-gray-100">
-    <div class="w-full h-[80px] mt-5 flex items-center justify-between p-4 bg-green-600 text-white shadow-lg rounded-lg">
-        <h1 class="text-2xl font-bold">Warga Dashboard</h1>
-        <a href="<?= base_url('CAuth/logout') ?>" class="text-white hover:text-gray-200 font-medium">Logout</a>
+    <div class="w-full h-[80px] mt-5 flex items-center justify-between p-4 bg-white shadow-md rounded-md">
+        <h1 class="text-xl font-bold text-gray-800">Warga Dashboard</h1>
+        <a href="<?= base_url('CAuth/logout') ?>" class="text-red-600 hover:text-red-800 font-medium">Logout</a>
     </div>
 
     <div class="w-full h-[50px] mt-8 p-3 bg-green-400 text-white font-bold border border-green-700 rounded-md shadow">

@@ -39,9 +39,10 @@ class CWarga extends CI_Controller
         $this->load->view('Template/footer');
     }
 
-    public function menu_tanggapan()
+    public function menu_tanggapan_konsultasi()
     {
-        $data['konsultasi'] = $this->MStafpelayanan->get_all_konsultasi();
+        $user_id = $this->session->userdata('id');
+        $data['konsultasi'] = $this->MWarga->get_konsultasi_by_user_id($user_id);
 
         $this->load->view('Template/header');
         $this->load->view('Template/sidebar_pages_warga');
@@ -195,6 +196,7 @@ class CWarga extends CI_Controller
         } else {
             // Data dari Form
             $data = [
+                'user_id' => $this->input->post('user_id'),
                 'nama' => $this->input->post('nama'),
                 'alamat' => $this->input->post('alamat'),
                 'telepon' => $this->input->post('telepon'),
