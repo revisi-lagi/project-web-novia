@@ -1,11 +1,10 @@
 <div id="app" class="flex h-screen">
-    <div class="w-[220px] px-4 border border-black">
+    <div class="w-[220px] px-4 bg-[#F5F5F5] border border-black">
 
-        <div class="flex items-center">
-            <img src="<?= base_url('assets/logo/logo.png') ?>" alt="" class="w-[120px] -ml-10">
-            <h1 class="text-xl font-bold -ml-5">Project Intern</h1>
+        <div class="mt-5 flex items-center">
+            <img src="<?= base_url('assets/logo/logo-kab-tegal.png') ?>" alt="" class="w-[50px] ">
+            <h1 class="font-bold ml-5">Pengaduan Konsultasi DPMPTSP</h1>
         </div>
-
         <div class="mt-5 flex flex-col gap-8">
             <a href="<?= base_url('CPages/Stafpelayanan') ?>" class="p-2 flex items-center gap-3 rounded-lg hover:bg-slate-400 ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="#000000" viewBox="0 0 256 256">
