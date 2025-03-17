@@ -25,46 +25,45 @@ class CAdmin extends CI_Controller
         $this->load->view('Pages/Admin/data_warga', $data);
         $this->load->view('Template/footer');
     }
-    
-    
+
+
     // Hapus Data warga
     public function hapus_data_warga($id)
     {
-    $this->MAdmin->delete_data_warga($id);
-    $this->session->set_flashdata('success', 'data warga berhasil dihapus.');
-    redirect('CAdmin/menu_data_warga');
+        $this->MAdmin->delete_data_warga($id);
+        $this->session->set_flashdata('success', 'data warga berhasil dihapus.');
+        redirect('CAdmin/menu_data_warga');
     }
 
     public function update_data_warga()
-{
-    $id = $this->input->post('id');
-    $data = [
-        'nama_warga' => $this->input->post('nama_warga'),
-        'nik' => $this->input->post('nik'),
-        'alamat' => $this->input->post('alamat'),
-        'jenis_kelamin' => $this->input->post('jenis_kelamin')
-    ];
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'nama_warga' => $this->input->post('nama_warga'),
+            'nik' => $this->input->post('nik'),
+            'alamat' => $this->input->post('alamat'),
+            'jenis_kelamin' => $this->input->post('jenis_kelamin')
+        ];
 
-    if ($this->MAdmin->update_data_warga($id, $data)) {
-        echo json_encode(["status" => "success", "message" => "Data warga berhasil diperbarui"]);
-    } else {
-        echo json_encode(["status" => "error", "message" => "Gagal memperbarui data warga"]);
+        if ($this->MAdmin->update_data_warga($id, $data)) {
+            echo json_encode(["status" => "success", "message" => "Data warga berhasil diperbarui"]);
+        } else {
+            echo json_encode(["status" => "error", "message" => "Gagal memperbarui data warga"]);
+        }
+
+        redirect('CAdmin/menu_data_warga');
     }
 
-    redirect('CAdmin/menu_data_warga');
-}
-
-public function simpan_edit_warga()
-{
-    $id = $this->input->post('id');
-    $data = [
-        'nama_warga' => $this->input->post('nama_warga'),
-        'nik' => $this->input->post('nik'),
-        'alamat' => $this->input->post('alamat'),
-        'jenis_kelamin' => $this->input->post('jenis_kelamin')
-    ];
-
-}
+    public function simpan_edit_warga()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'nama_warga' => $this->input->post('nama_warga'),
+            'nik' => $this->input->post('nik'),
+            'alamat' => $this->input->post('alamat'),
+            'jenis_kelamin' => $this->input->post('jenis_kelamin')
+        ];
+    }
 
     public function menu_data_stafpelayanan()
     {
@@ -75,7 +74,7 @@ public function simpan_edit_warga()
         $this->load->view('Pages/Admin/data_stafpelayanan', $data);
         $this->load->view('Template/footer');
     }
-    
+
 
     public function menu_laporan_pengaduan()
     {
@@ -87,12 +86,22 @@ public function simpan_edit_warga()
         $this->load->view('Template/footer');
     }
 
+    public function menu_cetak_laporan_pengaduan()
+    {
+        $data['pengaduan'] = $this->MAdmin->get_all_pengaduan();
+
+        $this->load->view('Template/header');
+        $this->load->view('Template/sidebar_pages_admin');
+        $this->load->view('Pages/Admin/cetak_laporan_pengaduan', $data);
+        $this->load->view('Template/footer');
+    }
+
     // Hapus Pengaduan
     public function hapus_pengaduan($id)
     {
-    $this->MAdmin->delete_pengaduan($id);
-    $this->session->set_flashdata('success', 'pengaduan berhasil dihapus.');
-    redirect('CAdmin/menu_laporan_pengaduan');
+        $this->MAdmin->delete_pengaduan($id);
+        $this->session->set_flashdata('success', 'pengaduan berhasil dihapus.');
+        redirect('CAdmin/menu_laporan_pengaduan');
     }
 
     public function menu_laporan_konsultasi()
@@ -140,5 +149,4 @@ public function simpan_edit_warga()
 
         redirect('CAdmin/menu_laporan_konsultasi');
     }
-    
 }
