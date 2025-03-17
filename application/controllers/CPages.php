@@ -48,4 +48,13 @@ class CPages extends CI_Controller
 		$this->load->view('Pages/Stafpelayanan/index');
 		$this->load->view('Template/footer');
 	}
+
+	public function KepalaDinas()
+	{
+		cek_akses(4);
+		$this->load->view('Template/header');
+		$this->load->view('Template/sidebar_pages_kepalaDinas');
+		$this->load->view('Pages/KepalaDinas/index');
+		$this->load->view('Template/footer');
+	}
 }

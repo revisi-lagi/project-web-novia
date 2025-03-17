@@ -68,6 +68,8 @@ class CAuth extends CI_Controller
 						redirect('CPages/Warga');
 					} elseif ($user['role_id'] == 3) {
 						redirect('CPages/Stafpelayanan');
+					} elseif ($user['role_id'] == 4) {
+						redirect('CPages/KepalaDinas');
 					}
 				} else {
 					$this->session->set_flashdata('message', '<p class="text-sm text-red-500">
