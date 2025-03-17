@@ -26,14 +26,16 @@ class CAdmin extends CI_Controller
         $this->load->view('Template/footer');
     }
 
-
-    // Hapus Data warga
-    public function hapus_data_warga($id)
+    public function edit_data_warga($id)
     {
-        $this->MAdmin->delete_data_warga($id);
-        $this->session->set_flashdata('success', 'data warga berhasil dihapus.');
-        redirect('CAdmin/menu_data_warga');
+        $data['warga'] = $this->MAdmin->get_warga_by_id($id);
+
+        $this->load->view('Template/header');
+        $this->load->view('Template/sidebar_pages_admin');
+        $this->load->view('Pages/Admin/edit_data_warga', $data);
+        $this->load->view('Template/footer');
     }
+
 
     public function update_data_warga()
     {
@@ -44,13 +46,16 @@ class CAdmin extends CI_Controller
             'alamat' => $this->input->post('alamat'),
             'jenis_kelamin' => $this->input->post('jenis_kelamin')
         ];
+        $this->MAdmin->update_data_warga($id, $data);
 
-        if ($this->MAdmin->update_data_warga($id, $data)) {
-            echo json_encode(["status" => "success", "message" => "Data warga berhasil diperbarui"]);
-        } else {
-            echo json_encode(["status" => "error", "message" => "Gagal memperbarui data warga"]);
-        }
+        redirect('CAdmin/menu_data_warga');
+    }
 
+    // Hapus Data warga
+    public function hapus_data_warga($id)
+    {
+        $this->MAdmin->delete_data_warga($id);
+        $this->session->set_flashdata('success', 'data warga berhasil dihapus.');
         redirect('CAdmin/menu_data_warga');
     }
 

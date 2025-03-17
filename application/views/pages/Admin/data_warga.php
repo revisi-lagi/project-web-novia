@@ -34,7 +34,7 @@
                             <td id="jenis_kelamin_<?= $user['id']; ?>"><?= htmlspecialchars($user['jenis_kelamin']); ?></td>
 
                             <td class="flex space-x-2">
-                                <button id="edit_btn_<?= $user['id']; ?>" onclick="editRow(<?= $user['id']; ?>)"
+                                <!-- <button id="edit_btn_<?= $user['id']; ?>" onclick="editRow(<?= $user['id']; ?>)"
                                     class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">
                                     Edit
                                 </button>
@@ -42,7 +42,8 @@
                                 <button id="save_btn_<?= $user['id']; ?>" onclick="saveRow(<?= $user['id']; ?>)"
                                     class="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 hidden ">
                                     Simpan
-                                </button>
+                                </button> -->
+                                <a href="<?= base_url('CAdmin/edit_data_warga/' . $user['id']) ?>" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">edit</a>
 
                                 <a href="<?= base_url('CAdmin/hapus_data_warga/' . $user['id']); ?>"
                                     class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600"

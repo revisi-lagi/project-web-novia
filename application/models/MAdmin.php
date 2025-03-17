@@ -18,19 +18,23 @@ class MAdmin extends CI_Model
     {
         return $this->db->get('warga')->result_array();
     }
-    
+
+    public function get_warga_by_id($id)
+    {
+        return $this->db->get_where('warga', ['id' => $id])->row_array();
+    }
 
     // Hapus Data warga berdasarkan ID
     public function delete_data_warga($id)
     {
-    $this->db->where('id', $id);
-    return $this->db->delete('warga');
+        $this->db->where('id', $id);
+        return $this->db->delete('warga');
     }
 
     public function update_data_warga($id, $data)
     {
-    $this->db->where('id', $id);
-    return $this->db->update('warga', $data);
+        $this->db->where('id', $id);
+        return $this->db->update('warga', $data);
     }
 
     public function get_all_stafpelayanan()
@@ -76,8 +80,8 @@ class MAdmin extends CI_Model
     // Hapus Pengaduan berdasarkan ID
     public function delete_pengaduan($id)
     {
-    $this->db->where('id', $id);
-    return $this->db->delete('pengaduan');
+        $this->db->where('id', $id);
+        return $this->db->delete('pengaduan');
     }
 
     public function get_konsultasi_by_kategori()
@@ -110,9 +114,7 @@ class MAdmin extends CI_Model
     // Hapus Konsultasi berdasarkan ID
     public function delete_konsultasi($id)
     {
-    $this->db->where('id', $id);
-    return $this->db->delete('konsultasi');
+        $this->db->where('id', $id);
+        return $this->db->delete('konsultasi');
     }
-
-    
 }
