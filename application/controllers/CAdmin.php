@@ -154,4 +154,35 @@ class CAdmin extends CI_Controller
 
         redirect('CAdmin/menu_laporan_konsultasi');
     }
+
+    public function create_staff_pelayanan()
+    {
+        $this->load->view('Template/header');
+        $this->load->view('Template/sidebar_pages_admin');
+        $this->load->view('Pages/Admin/tambah_staff_pelayanan');
+        $this->load->view('Template/footer');
+    }
+
+    public function tambah_staff_pelayanan()
+    {
+        $dataUser = [
+            'email' => htmlspecialchars($this->input->post('email', true)),
+            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            'role' => 'staff',
+            'role_id' => 3,
+            'is_active' => 1,
+            'date_created' => date('Y-m-d H:i:s')
+        ];
+        $this->db->insert('user', $dataUser);
+
+        $dataStaff = [
+            'nama_stafpelayanan' => htmlspecialchars($this->input->post('nama_stafpelayanan', true)),
+            'nik' => htmlspecialchars($this->input->post('nik', true)),
+            'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+            'jenis_kelamin' => htmlspecialchars($this->input->post('jenis_kelamin', true)),
+        ];
+        $this->db->insert('stafpelayanan', $dataStaff);
+        $this->session->set_flashdata('message', '<p class="text-sm text-green-500">akun staff berhasil dibuat</p>');
+        redirect('CAdmin/menu_data_stafpelayanan');
+    }
 }
