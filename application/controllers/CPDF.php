@@ -26,6 +26,23 @@ class CPDF extends CI_Controller
         $dompdf->render();
 
         // Unduh PDF
-        $dompdf->stream("Laporan_Dompdf.pdf", ["Attachment" => true]);
+        $dompdf->stream("Laporan_pengaduan.pdf", ["Attachment" => true]);
+    }
+
+    public function generate_laporan_konsultasi()
+    {
+
+        // Load HTML dari view
+        $data['konsultasi'] = $this->MStafpelayanan->get_all_konsultasi();
+        $html = $this->load->view('pages/KepalaDinas/pdf_laporan_konsultasi', $data, true);
+
+        // Buat objek Dompdf
+        $dompdf = $this->dompdf_lib->load();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait'); // Ukuran kertas A4 portrait
+        $dompdf->render();
+
+        // Unduh PDF
+        $dompdf->stream("Laporan_konsultasi.pdf", ["Attachment" => true]);
     }
 }

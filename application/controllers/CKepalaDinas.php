@@ -24,4 +24,13 @@ class CKepalaDinas extends CI_Controller
         $this->load->view('pages/KepalaDinas/laporan_pengaduan.php', $data);
         $this->load->view('Template/footer');
     }
+
+    public function menu_laporan_konsultasi()
+    {
+        $data['konsultasi'] = $this->MStafpelayanan->get_all_konsultasi();
+        $this->load->view('Template/header');
+        $this->load->view('Template/sidebar_pages_kepalaDinas');
+        $this->load->view('pages/KepalaDinas/laporan_konsultasi.php', $data);
+        $this->load->view('Template/footer');
+    }
 }
